@@ -115,7 +115,7 @@ public class UsuarioService {
     public TelefoneDTO cadastroTelefone(String token, TelefoneDTO dto){
         String email = jwtUtil.extrairEmailToken(token.substring(7));
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() ->
-                new ResourceNotFoundException("Telefone não localizado " + email));
+                    new ResourceNotFoundException("Telefone não localizado " + email));
 
         Telefone telefone = usuarioConverter.paraTelefoneEntity(dto, usuario.getId());
         Telefone telefoneEntity = telefoneRepository.save(telefone);
